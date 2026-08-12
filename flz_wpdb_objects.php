@@ -11,6 +11,8 @@ License: GPLv2 or later
 
 defined( 'ABSPATH' ) || exit;
 
+define( 'FLZ_WPDB_OBJECTS_VERSION', '1.4.0' );
+
 // Exception-Texte sind interne Logdaten; HTML-Escaping erfolgt erst an der UI-Grenze.
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 
