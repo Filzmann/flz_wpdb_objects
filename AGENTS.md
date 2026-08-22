@@ -41,6 +41,8 @@ Deployments ohne ausdrückliche Freigabe; nie `git add .` verwenden.
   werden getrennt ausgewiesen. Eine gemessene Baseline darf nicht sinken;
   neuer oder wesentlich geänderter Code erreicht mindestens 85 Prozent,
   Sicherheitsinvarianten unabhängig davon vollständig.
+- Der PHPCOV-/Xdebug-Messjob ist vorbereitet; die PHP-Baseline bleibt bis zum
+  ersten reproduzierbaren Remote-Lauf ausdrücklich `pending`.
 - Ein Fast- oder Diagnosecheck ist kein Releaseurteil. Ein Release braucht ein
   sauberes Repository, konsistente Version/Changelog/Lizenz, vollständig
   ausgefülltes `docs/manual-acceptance.md`, ein reproduzierbares Ein-Wurzel-

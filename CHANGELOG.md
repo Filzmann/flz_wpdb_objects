@@ -9,6 +9,7 @@ ergänzt.
 - Reproduzierbare PR-/Main-CI für PHP 8.1 und 8.5 ergänzt.
 - Branchgleiche Verbraucherprüfungen für die drei Fachplugins ergänzt.
 - Formale Lizenz- und Abnahmenachweise in den Delivery-Vertrag aufgenommen.
+- Gepinnten PHPCOV-/Xdebug-Messjob für eine ehrliche PHP-Baseline ergänzt.
 
 ## 2.0.0
 

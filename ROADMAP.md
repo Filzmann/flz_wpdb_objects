@@ -11,6 +11,9 @@ ein grüner Remote-Lauf, gemessene No-Regression-Coverage, vollständige
 Verbraucher-/DDEV-Abnahme und ein reproduzierbar geprüftes Release-Artefakt.
 Das ausfüllbare Protokoll liegt unter `docs/manual-acceptance.md`.
 
+Der PHPCOV-/Xdebug-Job ist konfiguriert. Eine PHP-Baseline darf erst aus dem
+reproduzierbaren Remote-Lauf übernommen werden und bleibt bis dahin `pending`.
+
 ## P1
 
 1. **Erledigt:** `flz_wpdb_objects_create_csv_file()` als öffentlichen Exportpfad ablösen.
