@@ -40,7 +40,7 @@ Deployments ohne ausdrückliche Freigabe; nie `git add .` verwenden.
   werden getrennt ausgewiesen. Eine gemessene Baseline darf nicht sinken;
   neuer oder wesentlich geänderter Code erreicht mindestens 85 Prozent,
   Sicherheitsinvarianten unabhängig davon vollständig.
-- Der PHPCOV-/Xdebug-Messjob erzwingt eine PHP-Baseline von 54,99 Prozent; das
+- Der PHPCOV-/Xdebug-Messjob erzwingt eine PHP-Baseline von 58,18 Prozent; das
   separate Ziel für neuen oder wesentlich geänderten Code bleibt 85 Prozent.
 - `scripts/build-release` erzeugt über den kanonischen Workspace-Builder ein
   reproduzierbares Ein-Wurzel-ZIP mit Manifest und SHA-256. Das Artefakt-Gate

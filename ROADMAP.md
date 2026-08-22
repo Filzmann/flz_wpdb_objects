@@ -6,10 +6,12 @@
 Bezeichner validiert und Fehler gekapselt. Der öffentliche persistente
 CSV-Dateipfad ist abgeschaltet, Uploads sind begrenzt und die öffentliche API
 samt Breaking-Change-Prozess ist dokumentiert. PR-/Main-CI, branchgleiche
-Verbrauchertests und die PHP-Ratsche von 54,99 Prozent sind remote enforced.
-Der reproduzierbare ZIP-Builder ist konfiguriert. Vor einem Tag fehlen die
-vollständige Verbraucher-/DDEV-Abnahme, die schrittweise Annäherung an das
-85-Prozent-Ziel sowie Installation und Rückbau aus dem exakten Artefakt. Das
+Verbrauchertests und die PHP-Ratsche von 58,18 Prozent sind remote enforced.
+Der reproduzierbare ZIP-Builder sowie technische Installation, Deaktivierung,
+Reaktivierung und Rückbau des exakten Artefakts sind geprüft. Vor einem Tag
+fehlen die vollständige Verbraucher-/DDEV-Fachabnahme, eine saubere
+Frischinstallation, der relevante Vorversions-Upgradepfad und die schrittweise
+Annäherung an das 85-Prozent-Ziel. Das
 ausfüllbare Protokoll liegt unter `docs/manual-acceptance.md`.
 
 ## P1

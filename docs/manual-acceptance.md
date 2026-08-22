@@ -27,6 +27,20 @@ genau ein Ergebnis markieren: `[ ] erfolgreich`, `[ ] nicht erfolgreich` oder
 
 ## Manuelle Prüffälle
 
+### Technischer ZIP-Teilnachweis vom 22. August 2026
+
+- Umgebung: DDEV, WordPress 7.1, PHP 8.3, MariaDB 10.11.
+- Exaktes Artefakt: `flz_wpdb_objects-2.0.0.zip`, Commit
+  `62934a1f65d89d6122e19351a7f23354015f471e`, SHA-256
+  `74f9271ab35c73953f2e3949217b1550e0f0749b9a495fb3232041d2f2d32536`.
+- Zwei Bauten waren bytegleich; Archivwurzel, Manifest, SHA und installierter
+  Dateibaum wurden geprüft. WP-CLI-Installation, Aktivstatus, Deaktivierung,
+  Reaktivierung und HTTP 200 waren erfolgreich.
+- Rückbau über Snapshot `before-exact-zip-acceptance-20260822` und die sechs
+  ursprünglichen Quell-Symlinks war erfolgreich.
+- Noch nicht belegt: saubere Frischinstallation, Upgrade aus der relevanten
+  Vorversion sowie die nachfolgenden fachlichen und manuellen Prüffälle.
+
 | ID | Prüfschritte | Erwartetes Ergebnis | Ergebnis | Warum / Beleg / Abweichung |
 |---|---|---|---|---|
 | WDB-01 | Artefakt in sauberer WordPress-Instanz installieren und aktivieren. | Aktivierung ohne Warnung; keine fachlichen Tabellen, Rollen oder Optionen entstehen. | [ ] erfolgreich [ ] nicht erfolgreich [ ] nicht geprüft | |

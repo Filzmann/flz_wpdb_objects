@@ -9,7 +9,7 @@ ergänzt.
 - Reproduzierbare PR-/Main-CI für PHP 8.1 und 8.5 ergänzt.
 - Branchgleiche Verbraucherprüfungen für die drei Fachplugins ergänzt.
 - Formale Lizenz- und Abnahmenachweise in den Delivery-Vertrag aufgenommen.
-- PHP-No-Regression-Ratsche bei 54,99 Prozent remote enforced.
+- PHP-No-Regression-Ratsche nach zusätzlicher Wertobjekt-Abdeckung bei 58,18 Prozent remote enforced.
 - Reproduzierbaren Ein-Wurzel-ZIP-Bau mit Manifest, SHA-256 und CI-Prüfung
   ergänzt.
 
