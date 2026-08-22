@@ -1,5 +1,10 @@
 # flz_wpdb_objects
 
+Der BR-starke Commit-/Coverage-/Releasevertrag wird schrittweise übernommen;
+bis zum grünen lokalen Gate bleibt ein Release blockiert. Für die spätere
+fachliche und technische Prüfung steht
+[`docs/manual-acceptance.md`](docs/manual-acceptance.md) bereit.
+
 ## Modelltabellen und Custom-Queries
 
 Tabellennamen werden zentral aus dem konkreten Modellnamen abgeleitet und in
