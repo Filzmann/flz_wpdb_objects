@@ -2,17 +2,15 @@
 
 ## Prüfstatus
 
-**Funktionsstand 2.0.0; Release-Gate in Übernahmephase 1 blockiert.** SQL-Werte werden zentral gebunden, dynamische
+**Funktionsstand 2.0.0; Release-Gate in Übernahmephase 2 blockiert.** SQL-Werte werden zentral gebunden, dynamische
 Bezeichner validiert und Fehler gekapselt. Der öffentliche persistente
 CSV-Dateipfad ist abgeschaltet, Uploads sind begrenzt und die öffentliche API
-samt Breaking-Change-Prozess ist dokumentiert. PR-/Main-CI einschließlich
-branchgleicher Verbrauchertests ist lokal konfiguriert; vor einem Tag fehlen
-ein grüner Remote-Lauf, gemessene No-Regression-Coverage, vollständige
-Verbraucher-/DDEV-Abnahme und ein reproduzierbar geprüftes Release-Artefakt.
-Das ausfüllbare Protokoll liegt unter `docs/manual-acceptance.md`.
-
-Der PHPCOV-/Xdebug-Job ist konfiguriert. Eine PHP-Baseline darf erst aus dem
-reproduzierbaren Remote-Lauf übernommen werden und bleibt bis dahin `pending`.
+samt Breaking-Change-Prozess ist dokumentiert. PR-/Main-CI, branchgleiche
+Verbrauchertests und die PHP-Ratsche von 54,99 Prozent sind remote enforced.
+Der reproduzierbare ZIP-Builder ist konfiguriert. Vor einem Tag fehlen die
+vollständige Verbraucher-/DDEV-Abnahme, die schrittweise Annäherung an das
+85-Prozent-Ziel sowie Installation und Rückbau aus dem exakten Artefakt. Das
+ausfüllbare Protokoll liegt unter `docs/manual-acceptance.md`.
 
 ## P1
 

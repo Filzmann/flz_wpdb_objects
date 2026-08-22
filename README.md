@@ -1,9 +1,15 @@
 # flz_wpdb_objects
 
-Der BR-starke Commit-/Coverage-/Releasevertrag wird schrittweise übernommen;
-bis zum grünen lokalen Gate bleibt ein Release blockiert. Für die spätere
-fachliche und technische Prüfung steht
+Commit-, CI- und Coverage-Gates sind in Übernahmephase 2 enforced. Ein Release
+bleibt bis zur ausgefüllten Abnahme sowie zur Installation und zum Rückbau aus
+dem exakten Artefakt blockiert. Für die fachliche und technische Prüfung steht
 [`docs/manual-acceptance.md`](docs/manual-acceptance.md) bereit.
+
+Ein sauberer Commit wird reproduzierbar paketiert mit:
+
+```bash
+./scripts/build-release /tmp/flz_wpdb_objects-release
+```
 
 ## Modelltabellen und Custom-Queries
 
