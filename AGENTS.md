@@ -28,9 +28,11 @@ Deployments ohne ausdrückliche Freigabe; nie `git add .` verwenden.
 
 ## Commit-, Coverage- und Release-Gates
 
-- Der aktuelle Übernahmestand ist Phase 0: normale Produkt- und Releasecommits
-  bleiben blockiert; ausdrücklich beauftragte Quality-Rollout-Commits dürfen
-  die fehlende Infrastruktur schrittweise herstellen.
+- Der aktuelle Übernahmestand ist Phase 1: PR-/Main-CI, Lizenz, Changelog und
+  branchgleiche Verbrauchertests sind lokal konfiguriert. Bis zum ersten
+  grünen Remote-Lauf und den Coverage-Gates bleiben normale Produkt- und
+  Releasecommits blockiert; ausdrücklich beauftragte Quality-Rollout-Commits
+  dürfen die fehlende Infrastruktur schrittweise herstellen.
 - Vor einem späteren normalen Commit sind Status, Diff-Statistik und vollständige
   Dateiliste zu zeigen; fokussierte Tests, `./scripts/check-fast`, relevante
   Provider-/Consumer-Tests, CI und Coverage-Gates müssen grün sein. Dateien

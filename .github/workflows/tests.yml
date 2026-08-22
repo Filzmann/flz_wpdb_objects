@@ -1,0 +1,98 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  php:
+    name: PHP ${{ matrix.php-version }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.1', '8.5']
+    steps:
+      - name: Plugin auschecken
+        uses: actions/checkout@v7
+        with:
+          path: flz_wpdb_objects
+      - name: PHP einrichten
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+          tools: composer:v2
+      - name: Gesperrte Entwicklungsabhängigkeiten installieren
+        run: composer install --working-dir=flz_wpdb_objects --no-interaction --no-progress --prefer-dist
+      - name: Komponentenprüfungen
+        working-directory: flz_wpdb_objects
+        run: ./scripts/check-fast
+
+  consumers:
+    name: Verbrauchertests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Shared-Plugin auschecken
+        uses: actions/checkout@v7
+        with:
+          path: flz_wpdb_objects
+      - name: Branchgleiche Referenzen bestimmen
+        id: related-refs
+        env:
+          CANDIDATE_REF: ${{ github.head_ref || github.ref_name }}
+        run: |
+          for repository in \
+            flz_elternsprechtag \
+            flz_probeunterricht \
+            flz_ags; do
+            if git ls-remote --exit-code --heads "https://github.com/Filzmann/$repository.git" "refs/heads/$CANDIDATE_REF" >/dev/null 2>&1; then
+              echo "$repository=$CANDIDATE_REF" >> "$GITHUB_OUTPUT"
+            else
+              echo "$repository=main" >> "$GITHUB_OUTPUT"
+            fi
+          done
+      - name: flz_elternsprechtag auschecken
+        uses: actions/checkout@v7
+        with:
+          repository: Filzmann/flz_elternsprechtag
+          ref: ${{ steps.related-refs.outputs.flz_elternsprechtag }}
+          path: flz_elternsprechtag
+      - name: flz_probeunterricht auschecken
+        uses: actions/checkout@v7
+        with:
+          repository: Filzmann/flz_probeunterricht
+          ref: ${{ steps.related-refs.outputs.flz_probeunterricht }}
+          path: flz_probeunterricht
+      - name: flz_ags auschecken
+        uses: actions/checkout@v7
+        with:
+          repository: Filzmann/flz_ags
+          ref: ${{ steps.related-refs.outputs.flz_ags }}
+          path: flz_ags
+      - name: PHP einrichten
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+          tools: composer:v2
+      - name: Gesperrte Entwicklungsabhängigkeiten installieren
+        run: |
+          for repository in flz_wpdb_objects flz_elternsprechtag flz_probeunterricht flz_ags; do
+            composer install --working-dir="$repository" --no-interaction --no-progress --prefer-dist
+          done
+      - name: Verbrauchertests
+        run: |
+          (cd flz_elternsprechtag && ./scripts/check-fast)
+          (cd flz_probeunterricht && ./scripts/check-fast)
+          (cd flz_ags && ./scripts/check-fast)

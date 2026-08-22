@@ -2,13 +2,14 @@
 
 ## Prüfstatus
 
-**Funktionsstand 2.0.0; Release-Gate in Übernahmephase 0 blockiert.** SQL-Werte werden zentral gebunden, dynamische
+**Funktionsstand 2.0.0; Release-Gate in Übernahmephase 1 blockiert.** SQL-Werte werden zentral gebunden, dynamische
 Bezeichner validiert und Fehler gekapselt. Der öffentliche persistente
 CSV-Dateipfad ist abgeschaltet, Uploads sind begrenzt und die öffentliche API
-samt Breaking-Change-Prozess ist dokumentiert. Vor einem Tag fehlen CI,
-gemessene No-Regression-Coverage, vollständige Verbraucher-/DDEV-Abnahme und
-ein reproduzierbar geprüftes Release-Artefakt. Das ausfüllbare Protokoll liegt
-unter `docs/manual-acceptance.md`.
+samt Breaking-Change-Prozess ist dokumentiert. PR-/Main-CI einschließlich
+branchgleicher Verbrauchertests ist lokal konfiguriert; vor einem Tag fehlen
+ein grüner Remote-Lauf, gemessene No-Regression-Coverage, vollständige
+Verbraucher-/DDEV-Abnahme und ein reproduzierbar geprüftes Release-Artefakt.
+Das ausfüllbare Protokoll liegt unter `docs/manual-acceptance.md`.
 
 ## P1
 

@@ -19,6 +19,7 @@ genau ein Ergebnis markieren: `[ ] erfolgreich`, `[ ] nicht erfolgreich` oder
 
 | Nachweis | Kommando / Lauf | Ergebnis / Beleg |
 |---|---|---|
+| PR-/`main`-CI / PHP 8.1 und 8.5 | Workflow-Lauf / vollständiger Commit | |
 | Komponenten- und Security-Smokes | `./scripts/check-fast` | |
 | PHP-Line-Coverage / Baseline / Ziel 85 % | | |
 | Provider-/Consumer-Verträge | | |
