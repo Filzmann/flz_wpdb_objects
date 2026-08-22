@@ -405,40 +405,21 @@ flz_test_expect_exception(
 	[ 'nicht negativ' ]
 );
 
-$GLOBALS['flz_test_upload_dir'] = [
-	'basedir' => '/tmp',
-	'baseurl' => 'https://example.test/uploads',
-	'error'   => 'Simulierter Uploadfehler',
-];
 flz_test_expect_exception(
 	static fn() => flz_wpdb_objects_create_csv_file( [], [], 'test.csv' ),
-	FlzWpdbObjectsException::class,
-	[ 'Uploadverzeichnisses', 'Simulierter Uploadfehler' ]
+	BadMethodCallException::class,
+	[ 'nicht mehr unterstützt', 'send_csv_download' ]
 );
 
 $filename = 'flz-wpdb-error-test-' . getmypid() . '.csv';
 $path = '/tmp/' . $filename;
-$GLOBALS['flz_test_upload_dir'] = [
-	'basedir' => '/tmp',
-	'baseurl' => 'https://example.test/uploads',
-	'error'   => false,
-];
 flz_test_expect_exception(
 	static fn() => flz_wpdb_objects_create_csv_file( [], [ 'keine-array-zeile' ], $filename ),
-	InvalidArgumentException::class,
-	[ 'CSV-Zeile mit Index "0"', 'Array' ]
+	BadMethodCallException::class,
+	[ 'nicht mehr unterstützt', 'send_csv_download' ]
 );
 if ( is_file( $path ) ) {
-	unlink( $path );
-}
-
-$filename = 'flz-wpdb-success-test-' . getmypid() . '.csv';
-$path = '/tmp/' . $filename;
-$url = flz_wpdb_objects_create_csv_file( [ 'Kopf' ], [ [ 'CSV' ] ], $filename );
-flz_test_check( is_file( $path ), 'Erfolgreicher CSV-Export hat keine Datei erzeugt.' );
-flz_test_check( $url === 'https://example.test/uploads/' . $filename, 'CSV-URL ist unerwartet.' );
-if ( is_file( $path ) ) {
-	unlink( $path );
+	throw new RuntimeException( 'Der abgelöste CSV-Dateiexport hat eine öffentliche Datei erzeugt.' );
 }
 
 echo "OK: flz_wpdb_objects error handling smoke test\n";

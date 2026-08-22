@@ -27,14 +27,34 @@ zentral geprüft und im Fehlerfall als Modellfehler erklärbar.
 CSV-Ausgabe arbeitet zentral mit Arrays statt mit modellindividuellen
 `getCsvLine()`-Methoden:
 
-- `flz_wpdb_objects_create_csv_file($header, $rows, $filename)` schreibt eine
-  Datei in das Upload-Verzeichnis und liefert die URL.
+- `flz_wpdb_objects_build_csv_string($header, $rows)` erzeugt CSV ausschließlich
+  im temporären Speicher.
 - `flz_wpdb_objects_send_csv_download($header, $rows, $filename)` sendet einen
-  Download direkt an den Browser.
+  Download direkt an den Browser. Berechtigung und Nonce müssen vorher im
+  Fachworkflow geprüft worden sein.
+- `flz_wpdb_objects_read_uploaded_csv(...)` validiert PHP-Uploadfehler,
+  tatsächlichen HTTP-Upload, `.csv`-Typ sowie standardmäßig maximal 2 MiB,
+  10.000 Zeilen und 100 Spalten. Capability und Nonce bleiben Verantwortung
+  des Fachworkflows.
 
-Die alte Funktion `flz_wpdb_objects_create_csv()` und modellbasierte
-`getCsvLine()`-Relikte wurden entfernt. CSV-Zellen werden weiterhin gegen
-Tabellenkalkulations-Formeln neutralisiert.
+`flz_wpdb_objects_create_csv_file()` ist seit 2.0.0 ein absichtlich
+fehlschlagender Migrationspfad und erzeugt keine Datei mehr. Verbraucher müssen
+auf den autorisierten Direktdownload umstellen. CSV-Zellen werden weiterhin
+gegen Tabellenkalkulations-Formeln neutralisiert.
+
+## Öffentliche API und Kompatibilität
+
+Öffentlich unterstützt werden `FlzWpdbObject`, `FlzWpdbTransaction`,
+`FlzWpdbObjectsException`, die obigen CSV-Funktionen sowie die
+personenbezogenen Basisklassen `FlzPerson` und `FlzZeitraum`. Verbraucher sind
+`flz_ags`, `flz_elternsprechtag` und `flz_probeunterricht`.
+
+Additive Änderungen erfolgen in Minor-Releases. Geänderte Signaturen,
+wegfallendes Verhalten oder strengere Vorbedingungen benötigen ein
+Major-Release, einen dokumentierten Migrationshinweis und grüne Fast-Checks
+aller drei Verbraucher. 2.0.0 entfernt bewusst den dauerhaft öffentlichen
+CSV-Dateiexport; bestehende Funktionsaufrufe erhalten eine erklärende
+`BadMethodCallException` statt einer stillen Dateiablage.
 
 ## Fehlervertrag
 
@@ -64,15 +84,13 @@ Betroffene abhängige Plugins:
 - `flz_elternsprechtag`: Buchungen, Termin-Reset und Lehrkräfte-Import.
 - `flz_probeunterricht`: Anmeldungen, Schulplätze und Teilnehmer-Reset.
 
-### Migrationshinweis 1.4.0
+### Historischer Migrationshinweis 1.4.0
 
 Die Tabellennamen für Modelle mit CamelCase-Klassen wurden von der alten
 Kleinschreibung auf Snake-Case umgestellt. Das betrifft insbesondere
-`flz_elternsprechtag` und `flz_probeunterricht`. Die Umgebung ist noch nicht
-produktiv; deshalb gibt es bewusst keine Alt-Tabellen-Kompatibilität und keine
-automatische Datenmigration. Lokal genügt es, die betroffenen Plugins zu
-deaktivieren/aktivieren oder alte Testtabellen gezielt zu entfernen und neu
-anzulegen.
+`flz_elternsprechtag` und `flz_probeunterricht`. Die Fachplugins besitzen dafür
+inzwischen eigene additive Upgradepfade. Alte Tabellen werden durch dieses
+Shared-Plugin weder verändert noch gelöscht.
 
 ## Checks
 
@@ -81,4 +99,5 @@ werden:
 
 ```bash
 php flz_wpdb_objects/tests/error-handling-smoke.php
+php flz_wpdb_objects/tests/csv-upload-contract-smoke.php
 ```
