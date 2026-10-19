@@ -67,6 +67,11 @@ aller drei Verbraucher. 2.0.0 entfernt bewusst den dauerhaft öffentlichen
 CSV-Dateiexport; bestehende Funktionsaufrufe erhalten eine erklärende
 `BadMethodCallException` statt einer stillen Dateiablage.
 
+Der historische Befund und die Umstellung der frueheren SQL-API sind als
+[Migrationsnachweis zu 2.0.0](docs/records/2.0.0-hardening-migration.md)
+archiviert. Dieser Nachweis ergaenzt die aktuelle API-Beschreibung, ersetzt sie
+aber nicht.
+
 ## Fehlervertrag
 
 Datenbank-, Modell-, Hook- und Dateisystemfehler werden als
