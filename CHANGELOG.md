@@ -6,6 +6,8 @@ ergänzt.
 
 ## Unreleased
 
+## 2.1.0
+
 - Kurzlebige, benutzergebundene Staging-API für bereits geprüfte CSV-Importe
   ergänzt; ein Prüfstand wird bei der Bestätigung genau einmal konsumiert.
 
