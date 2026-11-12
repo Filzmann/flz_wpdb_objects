@@ -6,6 +6,11 @@ ergänzt.
 
 ## Unreleased
 
+## 2.1.0
+
+- Kurzlebige, benutzergebundene Staging-API für bereits geprüfte CSV-Importe
+  ergänzt; ein Prüfstand wird bei der Bestätigung genau einmal konsumiert.
+
 - Reproduzierbare PR-/Main-CI für PHP 8.1 und 8.5 ergänzt.
 - Branchgleiche Verbraucherprüfungen für die drei Fachplugins ergänzt.
 - Formale Lizenz- und Abnahmenachweise in den Delivery-Vertrag aufgenommen.

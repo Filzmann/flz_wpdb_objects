@@ -2,7 +2,7 @@
 /*
 Plugin Name: FLZ WPDB Objects
 Description: Stellt WordPress-Datenbankfunktionen als einfache CRUD-Modelle zur Verfügung
-Version: 2.0.0
+Version: 2.1.0
 Author: Filzmann
 License: GPLv2 or later
 Requires at least: 6.5
@@ -12,7 +12,7 @@ Text Domain: flz-wpdb-objects
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'FLZ_WPDB_OBJECTS_VERSION', '2.0.0' );
+define( 'FLZ_WPDB_OBJECTS_VERSION', '2.1.0' );
 
 // Exception-Texte sind interne Logdaten; HTML-Escaping erfolgt erst an der UI-Grenze.
 // phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
@@ -20,6 +20,7 @@ define( 'FLZ_WPDB_OBJECTS_VERSION', '2.0.0' );
 require_once __DIR__ . '/FlzWpdbObject.php';
 require_once __DIR__ . '/FlzPerson.php';
 require_once __DIR__ . '/FlzZeitraum.php';
+require_once __DIR__ . '/FlzCsvImportStage.php';
 
 // Die konkreten Fachplugins verwalten ihre eigenen Tabellen.
 register_activation_hook( __FILE__, 'flz_wpdb_objects_activate' );
